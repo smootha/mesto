@@ -1,0 +1,10 @@
+.profile__edit-button {
+  grid-area: edit-button;
+  width: 24px;
+  height: 24px;
+  background-image: url('../../../images/pancil.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid #fff;
+  margin-top: 8px;
+}
