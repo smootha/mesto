@@ -37,3 +37,7 @@
 @import url('../blocks/cards/__image/cards__image.css');
 @import url('../blocks/cards/__name/cards__name.css');
 @import url('../blocks/cards/__like/cards__like.css');
+
+/* Footer */
+@import url('../blocks/footer/footer.css');
+@import url('../blocks/footer/__copyright/footer__copyright.css');
