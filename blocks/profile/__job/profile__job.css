@@ -1,4 +1,4 @@
-.profile__comment {
+.profile__job {
   grid-area: comment;
   margin: 0;
   color: #fff;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .profile__comment {
+  .profile__job {
     font-size: 14px;
     line-height: 1.21;
     text-align: center;
