@@ -1,10 +1,23 @@
 .profile__info {
+  margin-top: 22px;
   display: grid;
+  grid-template-rows: 39px 18px;
 
-  grid-template-rows: auto auto;
-  align-items: center;
   grid-template-areas: 'name edit-button'
                        'comment comment';
 
   row-gap: 16px;
+  column-gap: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .profile__info {
+    grid-template-areas: '. name edit-button'
+                         'comment comment comment';
+    grid-template-columns: 18px 1fr 18px;
+    grid-template-rows: 26px 14px;
+    row-gap: 14px;
+    column-gap: 10px;
+    margin-top: 26px;
+  }
 }
