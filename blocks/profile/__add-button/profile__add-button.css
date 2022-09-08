@@ -6,7 +6,8 @@
   background-image: url('../../../images/plus.svg');
   background-position: center;
   background-repeat: no-repeat;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 @media screen and (max-width: 712px) {

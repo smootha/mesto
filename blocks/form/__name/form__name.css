@@ -9,7 +9,8 @@
   font-size: 14px;
   line-height: 1.21;
   font-weight: 400;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding-bottom: 7px;
 }
 

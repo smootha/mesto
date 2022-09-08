@@ -1,23 +1,31 @@
 .profile__info {
   margin-top: 22px;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 39px 16px 18px;
   grid-template-rows: 39px 18px;
 
-  grid-template-areas: 'name edit-button'
+      grid-template-areas: 'name edit-button'
                        'comment comment';
 
   row-gap: 16px;
-  column-gap: 18px;
+  -webkit-column-gap: 18px;
+     -moz-column-gap: 18px;
+          column-gap: 18px;
 }
 
 @media screen and (max-width: 600px) {
   .profile__info {
-    grid-template-areas: '. name edit-button'
+        grid-template-areas: '. name edit-button'
                          'comment comment comment';
+    -ms-grid-columns: 18px 10px 1fr 10px 18px;
     grid-template-columns: 18px 1fr 18px;
+    -ms-grid-rows: 26px 14px 14px;
     grid-template-rows: 26px 14px;
     row-gap: 14px;
-    column-gap: 10px;
+    -webkit-column-gap: 10px;
+       -moz-column-gap: 10px;
+            column-gap: 10px;
     margin-top: 26px;
   }
 }

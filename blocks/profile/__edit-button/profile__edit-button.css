@@ -6,9 +6,12 @@
   background-position: center;
   background-repeat: no-repeat;
   border: 1px solid #fff;
-  align-self: end;
-  justify-self: end;
-  box-sizing: border-box;
+  -ms-grid-row-align: end;
+      align-self: end;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 @media screen and (max-width: 600px) {

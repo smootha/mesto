@@ -5,7 +5,8 @@
   font-size: 18px;
   line-height: 1.21;
   font-weight: 400;
-  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }

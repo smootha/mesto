@@ -3,6 +3,8 @@
   width: 32px;
   right: -40px;
   top: -40px;
+  -webkit-transition: right .5s, top .5s, width .5s;
+  -o-transition: right .5s, top .5s, width .5s;
   transition: right .5s, top .5s, width .5s;
 }
 
