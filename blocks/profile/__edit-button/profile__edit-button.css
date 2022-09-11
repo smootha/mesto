@@ -17,8 +17,6 @@
 
 @media screen and (max-width: 600px) {
   .profile__edit-button {
-    -ms-grid-row-align: end;
-    align-self: end;
     background-size: 8px;
     width: 18px;
     height: 18px;
