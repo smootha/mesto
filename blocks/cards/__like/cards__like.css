@@ -1,6 +1,10 @@
 .cards__like {
-  position: absolute;
-  bottom: 30px;
-  right: 20px;
+  background: none;
+  background-image: url(../../../images/heart.svg);
+  padding: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
   width: 22px;
+  height: 22px;
 }

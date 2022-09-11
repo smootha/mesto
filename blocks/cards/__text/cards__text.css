@@ -1,0 +1,7 @@
+.cards__text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 241px;
+  margin: 20px auto 0;
+}

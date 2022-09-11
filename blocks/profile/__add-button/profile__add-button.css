@@ -3,6 +3,7 @@
   height: 50px;
   border: 2px solid #fff;
   border-radius: 2px;
+  background: none;
   background-image: url('../../../images/plus.svg');
   background-position: center;
   background-repeat: no-repeat;

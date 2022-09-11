@@ -2,13 +2,13 @@
   margin-top: 22px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 39px 16px 18px;
-  grid-template-rows: 39px 18px;
-
-      grid-template-areas: 'name edit-button'
+  -ms-grid-columns: fit-content(450px) 18px fit-content(50px);
+  grid-template-columns: fit-content(450px) fit-content(50px);
+  -ms-grid-rows: 49px 6px 22px;
+  grid-template-rows: 49px 22px;
+  grid-template-areas: 'name edit-button'
                        'comment comment';
-
-  row-gap: 16px;
+  row-gap: 6px;
   -webkit-column-gap: 18px;
      -moz-column-gap: 18px;
           column-gap: 18px;
@@ -26,6 +26,6 @@
     -webkit-column-gap: 10px;
        -moz-column-gap: 10px;
             column-gap: 10px;
-    margin-top: 26px;
+    margin-top: 28px;
   }
 }
