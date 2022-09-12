@@ -14,9 +14,9 @@
 @import url('../blocks/button/button.css');
 
 /* Form */
-@import url('../blocks/form/form.css');
-@import url('../blocks/form/__name/form__name.css');
-@import url('../blocks/form/__job/form__job.css');
+@import url('../blocks/form/__input/form__input.css');
+@import url('../blocks/form/__input/_data/form__input_data_name.css');
+@import url('../blocks/form/__input/_data/form__input_data_job.css');
 @import url('../blocks/form/__submit/form__submit.css');
 
 /* Popup */

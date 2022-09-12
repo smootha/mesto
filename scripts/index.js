@@ -5,8 +5,8 @@ let popupItem = document.querySelector('.popup');
 
 let formElement = document.querySelector('.form');
 
-let nameInput = document.querySelector('.form__name');
-let jobInput = document.querySelector('.form__job');
+let nameInput = document.querySelector('.form__input_data_name');
+let jobInput = document.querySelector('.form__input_data_job');
 
 let userName = document.querySelector('.profile__name');
 let userJob = document.querySelector('.profile__job');
@@ -24,10 +24,8 @@ function togglePopup() {
 // PopUp Submit
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  let newName = nameInput.value;
-  let newJob = jobInput.value;
-  userName.textContent = newName;
-  userJob.textContent = newJob;
+  userName.textContent = nameInput.value;
+  userJob.textContent = jobInput.value;
   togglePopup();
 }
 
