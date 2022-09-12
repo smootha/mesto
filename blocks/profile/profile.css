@@ -13,7 +13,7 @@
   row-gap: 30px;
 }
 
-@media screen and (max-width: 712px) {
+@media screen and (max-width: 806px) {
   .profile {
     -webkit-box-pack: center;
         -ms-flex-pack: center;

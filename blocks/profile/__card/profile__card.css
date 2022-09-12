@@ -9,7 +9,7 @@
       flex-wrap: wrap;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 806px) {
   .profile__card {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

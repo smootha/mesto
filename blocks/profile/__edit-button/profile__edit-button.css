@@ -15,7 +15,7 @@
           box-sizing: border-box;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 806px) {
   .profile__edit-button {
     background-size: 8px;
     width: 18px;
