@@ -10,10 +10,9 @@
   white-space: nowrap;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 806px) {
   .profile__job {
     font-size: 14px;
-    line-height: 1.21;
     text-align: center;
   }
 }

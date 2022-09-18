@@ -3,6 +3,7 @@
   height: 50px;
   border: 2px solid #fff;
   border-radius: 2px;
+  background: none;
   background-image: url('../../../images/plus.svg');
   background-position: center;
   background-repeat: no-repeat;
@@ -10,7 +11,7 @@
           box-sizing: border-box;
 }
 
-@media screen and (max-width: 712px) {
+@media screen and (max-width: 806px) {
   .profile__add-button {
     width: 100%;
     background-size: 16px;

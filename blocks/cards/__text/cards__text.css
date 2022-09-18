@@ -1,4 +1,4 @@
-.profile {
+.cards__text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8,16 +8,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  row-gap: 30px;
-}
-
-@media screen and (max-width: 806px) {
-  .profile {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding: 0 19px;
-  }
+  width: 86%;
+  margin: 20px auto 0;
 }
