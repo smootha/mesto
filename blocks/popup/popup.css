@@ -6,7 +6,12 @@
   top: 0;
   left: 0;
   z-index: 1;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
