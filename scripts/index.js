@@ -81,4 +81,13 @@ initialCards.forEach((item) => {
   const name = item.name;
   const link = item.link;
   addCard(name, link);
-})
+});
+
+// Кнопка Like
+const likeButtons = document.querySelectorAll('.cards__like');
+likeButtons.forEach((like) =>{
+  like.addEventListener('click', function (event) {
+    const likeButton = event.target;
+    likeButton.classList.toggle('cards__like_active');
+  });
+});
