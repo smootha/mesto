@@ -85,9 +85,19 @@ initialCards.forEach((item) => {
 
 // Кнопка Like
 const likeButtons = document.querySelectorAll('.cards__like');
-likeButtons.forEach((like) =>{
+likeButtons.forEach((like) => {
   like.addEventListener('click', function (event) {
     const likeButton = event.target;
     likeButton.classList.toggle('cards__like_active');
+  });
+});
+
+// Кнопка Delete
+const deleteButtons = document.querySelectorAll('.cards__delete');
+deleteButtons.forEach((item) => {
+  item.addEventListener('click', function (event) {
+    const deleteButton = event.target;
+    const deleteCard = deleteButton.closest('.cards__item');
+    deleteCard.remove();
   });
 });
