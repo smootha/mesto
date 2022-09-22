@@ -18,6 +18,8 @@
 @import url('../blocks/form/__input/_data/form__input_data_name.css');
 @import url('../blocks/form/__input/_data/form__input_data_job.css');
 @import url('../blocks/form/__submit/form__submit.css');
+@import url('../blocks/form/__input/_data/form__input_data_place.css');
+@import url('../blocks/form/__input/_data/form__input_data_link.css');
 
 /* Popup */
 @import url('../blocks/popup/popup.css');
