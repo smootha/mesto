@@ -6,3 +6,7 @@
   -o-object-position: center;
      object-position: center;
 }
+
+.cards__image:hover {
+  cursor: pointer;
+}

@@ -10,16 +10,39 @@
 <body class="body">
   <div class="page">
 
-    <section class="popup">
+    <!-- Popup смены данных пользователя -->
+    <section class="popup popup__type_edit-profile">
       <div class="popup__container">
         <button class="popup__close-button button" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="form" name="edit-profile" id="edit-profile">
+        <form class="form form__type_edit-profile" name="edit-profile" id="edit-profile">
           <input class="form__input form__input_data_name" type="text" name="name" id="name">
           <input class="form__input form__input_data_job" type="text" name="comment" id="comment">
-          <button class="form__submit" type="submit">Сохранить</button>
+          <button class="form__submit form__submit_popup_edit-profile" type="submit">Сохранить</button>
         </form>
       </div>
+    </section>
+
+    <!-- Popup добавления фотографии -->
+    <section class="popup popup__type_add-card">
+      <div class="popup__container">
+        <button class="popup__close-button button" type="button"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="form form__type_add-card" name="add-photo" id="add-photo">
+          <input class="form__input form__input_data_place" type="text" name="place" id="place" placeholder="Название">
+          <input class="form__input form__input_data_link" type="url" name="url" id="url" placeholder="Ссылка на картинку">
+          <button class="form__submit form__submit_popup_add-photo" type="submit">Создать</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Popup карточки -->
+    <section class="popup popup__type_card">
+      <figure class="popup__image-holder">
+        <button class="popup__close-button button" type="button"></button>
+        <img class="popup__image" src="" alt="">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
     </section>
 
     <header class="header">
@@ -41,53 +64,6 @@
 
       <section class="gallery">
         <ul class="cards">
-          <li class="cards__item">
-            <img class="cards__image" src="images/karachaevsk.png" alt="Карачаевск">
-            <div class="cards__text">
-              <h2 class="cards__name">Карачаевск</h2>
-              <button class="cards__like button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="cards__item">
-            <img class="cards__image" src="images/elbrus.png" alt="Гора Эльбрус">
-            <div class="cards__text">
-              <h2 class="cards__name">Гора Эльбрус</h2>
-              <button class="cards__like button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="cards__item">
-            <img class="cards__image" src="images/dombai.png" alt="Домбай">
-            <div class="cards__text">
-              <h2 class="cards__name">Домбай</h2>
-              <button class="cards__like button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="cards__item">
-            <img class="cards__image" src="images/elbrus_2.png" alt="Гора Эльбрус">
-            <div class="cards__text">
-              <h2 class="cards__name">Гора Эльбрус</h2>
-              <button class="cards__like button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="cards__item">
-              <img class="cards__image" src="images/dombai_2.png" alt="Домбай">
-              <div class="cards__text">
-                <h2 class="cards__name">Домбай</h2>
-                <button class="cards__like button" type="button"></button>
-              </div>
-          </li>
-
-          <li class="cards__item">
-            <img class="cards__image" src="images/karachaevo-cherkesia.png" alt="Карачаево-Черкесия">
-            <div class="cards__text">
-              <h2 class="cards__name">Карачаево-Черкесия</h2>
-              <button class="cards__like button" type="button"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -95,6 +71,18 @@
     <footer class="footer">
       <p class="footer__copyright">&COPY; 2022 Евгений Довганич</p>
     </footer>
+
+    <template class="cards__template">
+      <li class="cards__item">
+        <img class="cards__image">
+        <button class="cards__delete button" type="button"></button>
+        <div class="cards__text">
+          <h2 class="cards__name"></h2>
+          <button class="cards__like button" type="button"></button>
+        </div>
+      </li>
+    </template>
+
   </div>
   <script src="./scripts/index.js"></script>
 </body>
