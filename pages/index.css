@@ -23,10 +23,14 @@
 
 /* Popup */
 @import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/_type/_card/popup__type_card.css');
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__container/popup__container.css');
 @import url('../blocks/popup/__close-button/popup__close-button.css');
 @import url('../blocks/popup/__title/popup__title.css');
+@import url('../blocks/popup/__image/popup__image.css');
+@import url('../blocks/popup/__image-holder/popup__image-holder.css');
+@import url('../blocks/popup/__caption/popup__caption.css');
 
 /* Header */
 @import url('../blocks/header/header.css');

@@ -37,7 +37,7 @@ function editFormSubmitHandler(evt) {
 profileFormElement.addEventListener('submit', editFormSubmitHandler);
 
 
-// Add PopUp Basics
+// AddPhoto PopUp Basics
 const popupAddCard = document.querySelector('.popup__type_add-card');
 
 const addCardButton = document.querySelector('.profile__add-button');
@@ -71,6 +71,22 @@ function addFormSubmitHandler(evt) {
 addFormElement.addEventListener('submit', addFormSubmitHandler);
 
 
+// Card PopUp Basics
+const popupCard = document.querySelector('.popup__type_card');
+const popupCardImage = popupCard.querySelector('.popup__image');
+const popupCardTitle = popupCard.querySelector('.popup__caption');
+const cardCloseButton = popupCard.querySelector('.popup__close-button');
+
+// Card PopUp Toggler Function
+function toggleCardPopup() {
+  popupCard.classList.toggle('popup_opened');
+}
+
+// Card Popup Close
+cardCloseButton.addEventListener('click', toggleCardPopup);
+
+
+
 // Добавление карточек: переменные
 const cardsGallery = document.querySelector('.cards');
 const card = document.querySelector('.cards__template').content;
@@ -80,6 +96,12 @@ function addCard(name, link) {
   const newCard = card.querySelector('.cards__item').cloneNode(true);
   const cardName = newCard.querySelector('.cards__name');
   const cardImage = newCard.querySelector('.cards__image');
+//Логика открытия изображения на полный экран
+  cardImage.addEventListener('click', (evt) => {
+    popupCardImage.src = evt.target.src;
+    popupCardTitle.textContent = cardName.textContent;
+    toggleCardPopup();
+  });
   const likeButton = newCard.querySelector('.cards__like');
   const deleteButton = newCard.querySelector('.cards__delete');
 //Логика Лайка
@@ -130,3 +152,4 @@ initialCards.forEach((item) => {
   const link = item.link;
   addCard(name, link);
 });
+
