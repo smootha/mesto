@@ -99,6 +99,7 @@ function addCard(name, link) {
 //Логика открытия изображения на полный экран
   cardImage.addEventListener('click', (evt) => {
     popupCardImage.src = evt.target.src;
+    popupCardImage.alt = cardName.textContent;
     popupCardTitle.textContent = cardName.textContent;
     toggleCardPopup();
   });
