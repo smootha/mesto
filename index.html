@@ -16,7 +16,7 @@
         <button class="popup__close-button close-button button" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form" name="edit-profile" id="edit-profile">
-          <input class="form__input form__input_data_name" type="text" name="name" id="name">
+          <input class="form__input form__input_data_name" type="text" name="name" id="name" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Представьтесь, уважаемый!')">
           <input class="form__input form__input_data_job" type="text" name="comment" id="comment">
           <button class="form__submit form__submit_popup_edit-profile" type="submit">Сохранить</button>
         </form>
@@ -29,8 +29,8 @@
         <button class="popup__close-button close-button button" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="form" name="add-photo" id="add-photo">
-          <input class="form__input form__input_data_place" type="text" name="place" id="place" placeholder="Название">
-          <input class="form__input form__input_data_link" type="url" name="url" id="url" placeholder="Ссылка на картинку">
+          <input class="form__input form__input_data_place" type="text" name="place" id="place" placeholder="Название" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Введите хоть что-нибудь!')">
+          <input class="form__input form__input_data_link" type="url" name="url" id="url" placeholder="Ссылка на картинку" required>
           <button class="form__submit form__submit_popup_add-photo" type="submit">Создать</button>
         </form>
       </div>
@@ -40,7 +40,7 @@
     <section class="popup preview">
       <figure class="preview__image-holder">
         <button class="preview__close-button close-button button" type="button"></button>
-        <img class="preview__image" src="*" alt="*">
+        <img class="preview__image" src="" alt="*">
         <figcaption class="preview__caption"></figcaption>
       </figure>
     </section>
@@ -84,6 +84,7 @@
     </template>
 
   </div>
+  <script src=".//scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
