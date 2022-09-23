@@ -1,8 +1,8 @@
 // Edit Profile PopUp Basics
-const popupEditProfile = document.querySelector('.popup__type_edit-profile');
+const popupEditProfile = document.querySelector('.edit-profile');
 
 const editButton = document.querySelector('.profile__edit-button');
-const profileCloseButton = popupEditProfile.querySelector('.popup__close-button');
+const profileCloseButton = popupEditProfile.querySelector('.close-button');
 const profileFormElement = popupEditProfile.querySelector('.form__type_edit-profile');
 
 const nameInput = document.querySelector('.form__input_data_name');
@@ -38,10 +38,10 @@ profileFormElement.addEventListener('submit', editFormSubmitHandler);
 
 
 // AddPhoto PopUp Basics
-const popupAddCard = document.querySelector('.popup__type_add-card');
+const popupAddCard = document.querySelector('.add-card');
 
 const addCardButton = document.querySelector('.profile__add-button');
-const addCardCloseButton = popupAddCard.querySelector('.popup__close-button');
+const addCardCloseButton = popupAddCard.querySelector('.close-button');
 const addFormElement = popupAddCard.querySelector('.form__type_add-card');
 
 const cardNameInput = document.querySelector('.form__input_data_place');
@@ -72,10 +72,10 @@ addFormElement.addEventListener('submit', addFormSubmitHandler);
 
 
 // Card PopUp Basics
-const popupCard = document.querySelector('.popup__type_card');
-const popupCardImage = popupCard.querySelector('.popup__image');
-const popupCardTitle = popupCard.querySelector('.popup__caption');
-const cardCloseButton = popupCard.querySelector('.popup__close-button');
+const popupCard = document.querySelector('.preview');
+const popupCardImage = popupCard.querySelector('.preview__image');
+const popupCardTitle = popupCard.querySelector('.preview__caption');
+const cardCloseButton = popupCard.querySelector('.close-button');
 
 // Card PopUp Toggler Function
 function toggleCardPopup() {
