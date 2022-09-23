@@ -1,9 +1,10 @@
 // Edit Profile PopUp Basics
+
 const popupEditProfile = document.querySelector('.edit-profile');
 
 const editButton = document.querySelector('.profile__edit-button');
 const profileCloseButton = popupEditProfile.querySelector('.close-button');
-const profileFormElement = popupEditProfile.querySelector('.form__type_edit-profile');
+const profileFormElement = popupEditProfile.querySelector('.form');
 
 const nameInput = document.querySelector('.form__input_data_name');
 const jobInput = document.querySelector('.form__input_data_job');
@@ -34,6 +35,7 @@ function editFormSubmitHandler(evt) {
   userJob.textContent = jobInput.value;
   toggleEditPopup();
 }
+
 profileFormElement.addEventListener('submit', editFormSubmitHandler);
 
 
@@ -42,7 +44,7 @@ const popupAddCard = document.querySelector('.add-card');
 
 const addCardButton = document.querySelector('.profile__add-button');
 const addCardCloseButton = popupAddCard.querySelector('.close-button');
-const addFormElement = popupAddCard.querySelector('.form__type_add-card');
+const addFormElement = popupAddCard.querySelector('.form');
 
 const cardNameInput = document.querySelector('.form__input_data_place');
 const cardLinkInput = document.querySelector('.form__input_data_link');
@@ -68,6 +70,7 @@ function addFormSubmitHandler(evt) {
   cardLinkInput.value = '';
   toggleAddPopup();
 }
+
 addFormElement.addEventListener('submit', addFormSubmitHandler);
 
 
