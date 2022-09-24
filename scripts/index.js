@@ -3,7 +3,7 @@ const popupEditProfile = document.querySelector('.edit-profile');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 
 const profileCloseButton = popupEditProfile.querySelector('.close-button');
-const profileFormElement = popupEditProfile.querySelector('.form');
+const formElementProfile = popupEditProfile.querySelector('.form');
 
 const nameInput = document.querySelector('.form__input_data_name');
 const jobInput = document.querySelector('.form__input_data_job');
@@ -13,9 +13,9 @@ const userJob = document.querySelector('.profile__job');
 // AddPhoto PopUp Basics
 const popupAddCard = document.querySelector('.add-card');
 
-const addCardButton = document.querySelector('.profile__add-button');
-const addCardCloseButton = popupAddCard.querySelector('.close-button');
-const addFormElement = popupAddCard.querySelector('.form');
+const buttonAddCard = document.querySelector('.profile__add-button');
+const buttonCloseAddCard = popupAddCard.querySelector('.close-button');
+const formElementAdd = popupAddCard.querySelector('.form');
 
 const cardNameInput = document.querySelector('.form__input_data_place');
 const cardLinkInput = document.querySelector('.form__input_data_link');
@@ -23,7 +23,7 @@ const cardLinkInput = document.querySelector('.form__input_data_link');
 const popupCard = document.querySelector('.preview');
 const popupCardImage = popupCard.querySelector('.preview__image');
 const popupCardTitle = popupCard.querySelector('.preview__caption');
-const cardCloseButton = popupCard.querySelector('.close-button');
+const buttonCloseCard = popupCard.querySelector('.close-button');
 // Добавление карточек: переменные
 const cardsGallery = document.querySelector('.cards');
 const card = document.querySelector('.cards__template').content;
@@ -97,7 +97,7 @@ function addCardSubmitHandler(evt) {
   }
   const cardToAdd = createCard(object);
   renderCard(cardToAdd);
-  addFormElement.reset();
+  formElementAdd.reset();
   closePopup(popupAddCard);
 }
 
@@ -112,22 +112,22 @@ profileCloseButton.addEventListener('click', () => {
   closePopup(popupEditProfile);
 });
 // EditProfile PopUp Submit
-profileFormElement.addEventListener('submit', editProfileSubmitHandler);
+formElementProfile.addEventListener('submit', editProfileSubmitHandler);
 
 
 // AddPhoto PopUp Open
-addCardButton.addEventListener('click', () => {
+buttonAddCard.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
 // AddPhoto PopUp Close
-addCardCloseButton.addEventListener('click', () => {
+buttonCloseAddCard.addEventListener('click', () => {
   closePopup(popupAddCard);
 });
 // AddPhoto PopUp Submit
-addFormElement.addEventListener('submit', addCardSubmitHandler);
+formElementAdd.addEventListener('submit', addCardSubmitHandler);
 
 // Card Popup Close
-cardCloseButton.addEventListener('click', () => {
+buttonCloseCard.addEventListener('click', () => {
   closePopup(popupCard);
 });
 
