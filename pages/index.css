@@ -18,7 +18,7 @@
 @import url('../blocks/form/__input/_data/form__input_data_name.css');
 @import url('../blocks/form/__input/_data/form__input_data_job.css');
 @import url('../blocks/form/__submit/form__submit.css');
-@import url('../blocks/form/__submit/_disabled/form__submit_disabled.css');
+@import url('../blocks/form/__submit/_inactive/form__submit_inactive.css');
 @import url('../blocks/form/__input/_data/form__input_data_place.css');
 @import url('../blocks/form/__input/_data/form__input_data_link.css');
 @import url('../blocks/form/__input/_invalid/form__input_invalid.css');
