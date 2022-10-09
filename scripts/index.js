@@ -62,7 +62,6 @@ function createCard(object) {
 function renderCard(card) {
   cardsGallery.prepend(card);
 }
-
 //Открытие Popup
 function openPopup(elem) {
   elem.classList.add('popup_opened');
@@ -88,7 +87,6 @@ function closePopupByOverlay(popup) {
     }
   })
 }
-
 // EditProfile PopUp Submit
 function editProfileSubmitHandler(evt) {
   evt.preventDefault();
@@ -96,7 +94,6 @@ function editProfileSubmitHandler(evt) {
   userJob.textContent = jobInput.value;
   closePopup(popupEditProfile);
 }
-
 // createCard PopUp Submit
 function addCardSubmitHandler(evt) {
   evt.preventDefault();
@@ -126,19 +123,14 @@ buttonEditProfile.addEventListener('click', () => {
   jobInput.value = userJob.textContent;
   openPopup(popupEditProfile);
 });
-
 // EditProfile PopUp Submit
 formElementProfile.addEventListener('submit', editProfileSubmitHandler);
-
-
 // AddPhoto PopUp Open
 buttonAddCard.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
-
 // AddPhoto PopUp Submit
 formElementAdd.addEventListener('submit', addCardSubmitHandler);
-
 // Add initial cards
 initialCards.forEach((item) => {
   renderCard(createCard(item));

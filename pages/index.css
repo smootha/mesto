@@ -22,6 +22,11 @@
 @import url('../blocks/form/__input/_data/form__input_data_place.css');
 @import url('../blocks/form/__input/_data/form__input_data_link.css');
 @import url('../blocks/form/__input/_invalid/form__input_invalid.css');
+@import url('../blocks/form/__error/form__error.css');
+@import url('../blocks/form/__error/_name-input/form__error_name-input.css');
+@import url('../blocks/form/__error/_job-input/form__error_job-input.css');
+@import url('../blocks/form/__error/_place-input/form__error_place-input.css');
+@import url('../blocks/form/__error/_link-input/form__error_link-input.css');
 
 /* Popup */
 @import url('../blocks/popup/popup.css');
