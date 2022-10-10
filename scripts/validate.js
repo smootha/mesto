@@ -1,13 +1,15 @@
 // Ф-ция показа невалидности элемента
-function showInputError(formElement, inputElement, errorMessage) {
+function showInputError(formElement, inputElement, errorMessage, obj) {
   const errorElement = formElement.querySelector(`.form__error_${inputElement.id}`);
-  inputElement.classList.add('form__input_invalid');
+  inputElement.classList.add(obj.inputErrorClass);
+  errorElement.classList.add(obj.errorClass);
   errorElement.textContent = errorMessage;
 }
 // Ф-ция скрытия невалидности элемента
-function hideInputError(formElement, inputElement) {
+function hideInputError(formElement, inputElement, obj) {
   const errorElement = formElement.querySelector(`.form__error_${inputElement.id}`);
-  inputElement.classList.remove('form__input_invalid');
+  inputElement.classList.remove(obj.inputErrorClass);
+  errorElement.classList.remove(obj.errorClass);
   errorElement.textContent = '';
 }
 // Проверка невалидности всех элементов формы
@@ -17,41 +19,46 @@ function hasInvalidInput(inputList) {
   });
 }
 // Поведение сабмита в зависимости от валидности элементов формы
-function toggleSubmitButton(inputList, buttonElement) {
+function toggleSubmitButton(inputList, buttonElement, obj) {
   if(hasInvalidInput(inputList)) {
-    buttonElement.classList.add('form__submit_inactive');
-    console.log('hi');
+    buttonElement.classList.add(obj.inactiveButtonClass);
   } else {
-    buttonElement.classList.remove('form__submit_inactive');
-    console.log('bye');
+    buttonElement.classList.remove(obj.inactiveButtonClass);
   }
 }
 // Ф-ция проверки элемента в форма на невалидность и вывод сообщения об ошибке
-function isValid(formElement, inputElement) {
+function isValid(formElement, inputElement, obj) {
   if(!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, obj);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, obj);
   }
 }
 // Ф-ция назначение обработчика на элемент ввода формы
-function setEventListeners(formElement) {
-  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-  const buttonElement = formElement.querySelector('.form__submit');
-  toggleSubmitButton(inputList, buttonElement);
+function setEventListeners(formElement, obj) {
+  const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
+  const buttonElement = formElement.querySelector(obj.submitButtonSelector);
+  toggleSubmitButton(inputList, buttonElement, obj);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      isValid(formElement, inputElement);
-      toggleSubmitButton(inputList, buttonElement);
+      isValid(formElement, inputElement, obj);
+      toggleSubmitButton(inputList, buttonElement, obj);
     });
   });
 }
 // Ф-ция добавления обработчика проверки на валидность ко всем элементам всех форм
-function enableValidation() {
-  const formList = Array.from(document.querySelectorAll('.form'));
+function enableValidation(obj) {
+  const formList = Array.from(document.querySelectorAll(obj.formSelector));
   formList.forEach((formElement) => {
-    setEventListeners(formElement);
+    setEventListeners(formElement, obj);
   });
 }
 
-enableValidation();
+enableValidation({
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_inactive',
+  inputErrorClass: 'form__input_invalid',
+  errorClass: 'form__error_visible'
+});
