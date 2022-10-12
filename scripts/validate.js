@@ -22,8 +22,10 @@ function hasInvalidInput(inputList) {
 function toggleSubmitButton(inputList, buttonElement, obj) {
   if(hasInvalidInput(inputList)) {
     buttonElement.classList.add(obj.inactiveButtonClass);
+    buttonElement.disabled = true;
   } else {
     buttonElement.classList.remove(obj.inactiveButtonClass);
+    buttonElement.disabled = false;
   }
 }
 // Ф-ция проверки элемента в форма на невалидность и вывод сообщения об ошибке
