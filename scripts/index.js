@@ -1,7 +1,6 @@
 // Popup Element Arrays
 const popups = Array.from(document.querySelectorAll('.popup'));
 const buttonsClose = Array.from(document.querySelectorAll('.close-button'));
-
 // Edit Profile PopUp Basics
 const popupEditProfile = document.querySelector('.edit-profile');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
@@ -62,21 +61,10 @@ function createCard(object) {
   cardImage.alt = name;
   return newCard;
 }
-//Обнуление признаков невалидности при закрытии попапа с несохраненными данными
-function resetInvalidStatus(popup) {
-  const allErrors = Array.from(popup.querySelectorAll('.form__error'));
-  const allInputs = Array.from(popup.querySelectorAll('.form__input'));
-
-  allErrors.forEach((error) => {
-    error.classList.remove('form__error_visible');
-  });
-  allInputs.forEach((input) => {
-    input.classList.remove('form__input_invalid');
-  });
-}
 //Дезактивация сабмита
 function addInactiveStatus(button) {
   button.classList.add('form__submit_inactive');
+  button.disabled = true;
 }
 //Функция добавления карточки на страницу
 function renderCard(card) {
@@ -89,18 +77,14 @@ function closeByEsc(evt) {
     closePopup(openedPopup);
   };
 }
-//Открытие Popup с отчисткой формы довабления фотоки
+//Открытие Popup
 function openPopup(popup) {
-  if (popup.classList.contains('add-card')) {
-    formElementAdd.reset();
-  }
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
 }
 //Закрытие Popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  resetInvalidStatus(popup);
   document.removeEventListener('keydown', closeByEsc);
 }
 //Закрытие Popup кликом по заднику
@@ -132,7 +116,6 @@ function addCardSubmitHandler(evt) {
   addInactiveStatus(buttonSubmitAddCard);
   closePopup(popupAddCard);
 }
-
 //Обработчик на все задники
 popups.forEach((popup) => {
   closePopupByOverlay(popup);
@@ -151,11 +134,12 @@ buttonEditProfile.addEventListener('click', () => {
 });
 // EditProfile PopUp Submit
 formElementProfile.addEventListener('submit', editProfileSubmitHandler);
-// AddPhoto PopUp Open
+// AddCard PopUp Open
 buttonAddCard.addEventListener('click', () => {
+  formElementAdd.reset();
   openPopup(popupAddCard);
 });
-// AddPhoto PopUp Submit
+// AddCard PopUp Submit
 formElementAdd.addEventListener('submit', addCardSubmitHandler);
 // Add initial cards
 initialCards.forEach((item) => {
