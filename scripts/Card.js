@@ -7,7 +7,7 @@ export class Card {
     const cardElement = document.querySelector('.cards__template').content.querySelector('.cards__item').cloneNode(true);
     return cardElement;
   }
-
+//Лайк
   _handleLikeClick() {
     this._newCard.querySelector('.cards__like').classList.toggle('cards__like_active');
   }
@@ -16,13 +16,23 @@ export class Card {
       this._handleLikeClick();
     });
   }
-
+//Удаление
+_handleDeleteClick() {
+  this._newCard.remove();
+}
+_setDeleteEventListener() {
+  this._newCard.querySelector('.cards__delete').addEventListener('click', () => {
+    this._handleDeleteClick();
+  });
+}
+//Создание карточки
   generateCard() {
     this._newCard = this._getTemplate();
     this._newCard.querySelector('.cards__name').textContent = this._name;
     this._newCard.querySelector('.cards__image').alt = this._name;
     this._newCard.querySelector('.cards__image').src = this._image;
     this._setLikeEventListener();
+    this._setDeleteEventListener();
     return this._newCard;
   }
 }
