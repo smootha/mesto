@@ -1,3 +1,6 @@
+import { initialCards } from './initialCards.js';
+import { Card } from './Card.js';
+
 // Popup Element Arrays
 const popups = Array.from(document.querySelectorAll('.popup'));
 const buttonsClose = Array.from(document.querySelectorAll('.close-button'));
@@ -33,7 +36,7 @@ const cardsGallery = document.querySelector('.cards');
 const card = document.querySelector('.cards__template').content;
 
 //Функция создания карточки
-function createCard(object) {
+/*function createCard(object) {
   const newCard = card.querySelector('.cards__item').cloneNode(true);
   const cardName = newCard.querySelector('.cards__name');
   const cardImage = newCard.querySelector('.cards__image');
@@ -60,7 +63,8 @@ function createCard(object) {
   cardImage.src = link;
   cardImage.alt = name;
   return newCard;
-}
+}*/
+
 //Дезактивация сабмита
 function addInactiveStatus(button) {
   button.classList.add('form__submit_inactive');
@@ -142,6 +146,9 @@ buttonAddCard.addEventListener('click', () => {
 // AddCard PopUp Submit
 formElementAdd.addEventListener('submit', addCardSubmitHandler);
 // Add initial cards
+
 initialCards.forEach((item) => {
-  renderCard(createCard(item));
+  const newCard = new Card(item.name, item.link);
+  const cardElement = newCard.generateCard();
+  cardsGallery.prepend(cardElement);
 });
