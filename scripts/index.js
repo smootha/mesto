@@ -1,5 +1,6 @@
 import { initialCards } from './initialCards.js';
 import { Card } from './Card.js';
+export { openPopup };
 
 // Popup Element Arrays
 const popups = Array.from(document.querySelectorAll('.popup'));
@@ -27,52 +28,19 @@ const cardNameInput = popupAddCard.querySelector('.form__input_data_place');
 const cardLinkInput = popupAddCard.querySelector('.form__input_data_link');
 
 const buttonSubmitAddCard = popupAddCard.querySelector('.form__submit');
-// Card PopUp Basics
-const popupCard = document.querySelector('.preview');
-const popupCardImage = popupCard.querySelector('.preview__image');
-const popupCardTitle = popupCard.querySelector('.preview__caption');
-// Добавление карточек: переменные
+// Галлерея карточек
 const cardsGallery = document.querySelector('.cards');
-const card = document.querySelector('.cards__template').content;
-
-//Функция создания карточки
-/*function createCard(object) {
-  const newCard = card.querySelector('.cards__item').cloneNode(true);
-  const cardName = newCard.querySelector('.cards__name');
-  const cardImage = newCard.querySelector('.cards__image');
-  const name = object.name;
-  const link = object.link;
- //Логика открытия изображения на полный экран
-  cardImage.addEventListener('click', () => {
-    popupCardImage.src = link;
-    popupCardImage.alt = name;
-    popupCardTitle.textContent = name;
-    openPopup(popupCard);
-  });
-  const buttonLike = newCard.querySelector('.cards__like');
-  const buttonDelete = newCard.querySelector('.cards__delete');
- //Логика Лайка
-  buttonLike.addEventListener('click', (event) => {
-    event.target.classList.toggle('cards__like_active');
-  });
- //Логика Удаления
-  buttonDelete.addEventListener('click', () => {
-    newCard.remove();
-  });
-  cardName.textContent = name;
-  cardImage.src = link;
-  cardImage.alt = name;
-  return newCard;
-}*/
 
 //Дезактивация сабмита
 function addInactiveStatus(button) {
   button.classList.add('form__submit_inactive');
   button.disabled = true;
 }
-//Функция добавления карточки на страницу
-function renderCard(card) {
-  cardsGallery.prepend(card);
+//Функция добавления карточки в галлерею
+function renderCard(item) {
+  const newCard = new Card(item.name, item.link);
+  const cardElement = newCard.generateCard();
+  cardsGallery.prepend(cardElement);
 }
 //Закрытие клавишей Esc
 function closeByEsc(evt) {
@@ -114,8 +82,7 @@ function addCardSubmitHandler(evt) {
     name: cardNameInput.value,
     link: cardLinkInput.value
   }
-  const cardToAdd = createCard(object);
-  renderCard(cardToAdd);
+  renderCard(object);
   formElementAdd.reset();
   addInactiveStatus(buttonSubmitAddCard);
   closePopup(popupAddCard);
@@ -146,9 +113,6 @@ buttonAddCard.addEventListener('click', () => {
 // AddCard PopUp Submit
 formElementAdd.addEventListener('submit', addCardSubmitHandler);
 // Add initial cards
-
 initialCards.forEach((item) => {
-  const newCard = new Card(item.name, item.link);
-  const cardElement = newCard.generateCard();
-  cardsGallery.prepend(cardElement);
+  renderCard(item);
 });
