@@ -1,4 +1,3 @@
-import { openPopup } from './index.js';
 // Card PopUp Basics
 const popupCard = document.querySelector('.preview');
 const popupCardImage = popupCard.querySelector('.preview__image');
