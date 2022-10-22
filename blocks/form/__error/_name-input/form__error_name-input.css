@@ -1,3 +1,9 @@
 .form__error_name-input {
   top: 142px;
 }
+
+@media screen and (max-width: 390px) {
+  .form__error_name-input {
+    top: 155px;
+  }
+}
