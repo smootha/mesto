@@ -1,3 +1,68 @@
+export class FormValidator {
+  constructor(validationObject, form) {
+    this._obj = validationObject;
+    this._formElement = form.querySelector(this._obj.formSelector);
+    this._submitButton = form.querySelector(this._obj.submitButtonSelector);
+    this._inputList = Array.from(form.querySelectorAll(this._obj.inputSelector));
+  }
+
+  _showInputError(input, errorMessage) {
+    const errorElement = this._formElement.querySelector(`.form__error_${input.id}`);
+    input.classList.add(this._obj.inputErrorClass);
+    errorElement.classList.add(this._obj.errorClass);
+    errorElement.textContent = errorMessage;
+  }
+  _hideInputError(input) {
+    const errorElement = this._formElement.querySelector(`.form__error_${input.id}`);
+    input.classList.remove(this._obj.inputErrorClass);
+    errorElement.classList.remove(this._obj.errorClass);
+    errorElement.textContent = '';
+  }
+  _isValid(input) {
+    if(!input.validity.valid) {
+      this._showInputError(input, input.validationMessage);
+    } else {
+      this._hideInputError(input);
+    }
+  }
+
+  _hasInvalidInput() {
+    return this._inputList.some((input) => {
+      return !input.validity.valid;
+    });
+  }
+
+  _toggleSubmitButton() {
+    if(this._hasInvalidInput()) {
+      this._submitButton.classList.add(this._obj.inactiveButtonClass);
+      this._submitButton.disabled = true;
+    } else {
+      this._submitButton.classList.remove(this._obj.inactiveButtonClass);
+      this._submitButton.disabled = false;
+    }
+  }
+
+  _setInputEventListener(input) {
+    input.addEventListener('input', () => {
+      this._isValid(input);
+      this._toggleSubmitButton();
+    });
+  }
+
+  _setEventListeners() {
+    this._toggleSubmitButton();
+    this._inputList.forEach((input) => {
+      this._setInputEventListener(input);
+    });
+  }
+
+  enableValidation() {
+    this._setEventListeners();
+  }
+
+}
+
+/*
 // Ф-ция показа невалидности элемента
 function showInputError(formElement, inputElement, errorMessage, obj) {
   const errorElement = formElement.querySelector(`.form__error_${inputElement.id}`);
@@ -64,3 +129,4 @@ enableValidation({
   inputErrorClass: 'form__input_invalid',
   errorClass: 'form__error_visible'
 });
+*/

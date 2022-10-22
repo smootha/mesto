@@ -1,7 +1,7 @@
 import { initialCards } from './initialCards.js';
 import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 export { openPopup };
-
 // Popup Element Arrays
 const popups = Array.from(document.querySelectorAll('.popup'));
 const buttonsClose = Array.from(document.querySelectorAll('.close-button'));
@@ -116,3 +116,18 @@ formElementAdd.addEventListener('submit', addCardSubmitHandler);
 initialCards.forEach((item) => {
   renderCard(item);
 });
+
+const validationObject = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_inactive',
+  inputErrorClass: 'form__input_invalid',
+  errorClass: 'form__error_visible'
+};
+
+const profileFormValidation = new FormValidator(validationObject, popupEditProfile);
+const cardFormValidation = new FormValidator(validationObject, popupAddCard);
+
+profileFormValidation.enableValidation();
+cardFormValidation.enableValidation();
