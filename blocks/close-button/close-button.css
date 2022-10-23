@@ -15,7 +15,7 @@
   transition: right .5s, top .5s, width .5s;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 540px) {
   .close-button {
     width: 20px;
     height: 20px;

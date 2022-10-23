@@ -2,7 +2,7 @@
   top: 200px;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 470px) {
   .form__error_link-input {
     top: 213px;
   }

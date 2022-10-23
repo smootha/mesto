@@ -1,5 +1,5 @@
 import { initialCards } from './initialCards.js';
-import { Card } from './Card.js';
+import { Card, popupCard, popupCardImage, popupCardTitle } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
 // Popup Element Arrays
@@ -16,8 +16,6 @@ const jobInput = popupEditProfile.querySelector('.form__input_data_job');
 
 const userName = document.querySelector('.profile__name');
 const userJob = document.querySelector('.profile__job');
-
-const buttonSubmitEditProfile = popupEditProfile.querySelector('.form__submit');
 // AddCard PopUp Basics
 const popupAddCard = document.querySelector('.add-card');
 
@@ -26,10 +24,9 @@ const formElementAdd = popupAddCard.querySelector('.form');
 
 const cardNameInput = popupAddCard.querySelector('.form__input_data_place');
 const cardLinkInput = popupAddCard.querySelector('.form__input_data_link');
-
-const buttonSubmitAddCard = popupAddCard.querySelector('.form__submit');
 // Галлерея карточек
 const cardsGallery = document.querySelector('.cards');
+const cardsTemplate = document.querySelector('.cards__template');
 // Объект настроек валидации
 const validationObject = {
   inputSelector: '.form__input',
@@ -43,13 +40,24 @@ const profileFormValidation = new FormValidator(validationObject, popupEditProfi
 const cardFormValidation = new FormValidator(validationObject, popupAddCard);
 profileFormValidation.enableValidation();
 cardFormValidation.enableValidation();
-//Функция добавления карточки в галлерею
-function renderCard(item) {
-  const newCard = new Card(item.name, item.link);
-  const cardElement = newCard.generateCard();
-  cardsGallery.prepend(cardElement);
+// Действия при клике на картинку карточки
+function handlePopupImageClick (name, link) {
+  popupCardTitle.textContent = name;
+  popupCardImage.alt = name;
+  popupCardImage.src = link;
+  openPopup(popupCard);
 }
-//Закрытие клавишей Esc
+// Функция создания карточки
+function createCard(data) {
+  const card = new Card(data, cardsTemplate, handlePopupImageClick);
+  const newCard = card.generateCard();
+  return newCard;
+}
+// Функция добавления карточки в начало галлереи
+function prependCard(data) {
+  cardsGallery.prepend(createCard(data));
+}
+// Закрытие клавишей Esc
 function closeByEsc(evt) {
   if(evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
@@ -100,7 +108,7 @@ function addCardSubmitHandler(evt) {
     name: cardNameInput.value,
     link: cardLinkInput.value
   }
-  renderCard(object);
+  prependCard(object);
   cardFormValidation.resetClosedForm();
   closePopup(popupAddCard);
 }
@@ -130,6 +138,6 @@ buttonAddCard.addEventListener('click', () => {
 // AddCard PopUp Submit
 formElementAdd.addEventListener('submit', addCardSubmitHandler);
 // Add initial cards
-initialCards.forEach((item) => {
-  renderCard(item);
+initialCards.forEach((data) => {
+  prependCard(data);
 });

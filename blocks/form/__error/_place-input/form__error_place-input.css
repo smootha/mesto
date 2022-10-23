@@ -2,7 +2,7 @@
   top: 142px;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 470px) {
   .form__error_place-input {
     top: 155px;
   }
