@@ -1,10 +1,9 @@
 export class FormValidator {
   constructor(validationObject, form) {
     this._obj = validationObject;
-    this._formElement = form.querySelector(this._obj.formSelector);
+    this._formElement = form;
     this._submitButton = form.querySelector(this._obj.submitButtonSelector);
     this._inputList = Array.from(form.querySelectorAll(this._obj.inputSelector));
-    this._errorList = Array.from(form.querySelectorAll(this._obj.formErrorSelector));
   }
 //Отключение кнопки сабмита
   _disableSubmitButton() {
@@ -12,7 +11,7 @@ export class FormValidator {
     this._submitButton.disabled = true;
   }
 // Сброс стилей невалидного инпута
-  _removeInvalidStyle(input) {
+  _hideInputError(input) {
     const errorElement = this._formElement.querySelector(`.form__error_${input.id}`);
     input.classList.remove(this._obj.inputErrorClass);
     errorElement.classList.remove(this._obj.errorClass);
@@ -21,7 +20,7 @@ export class FormValidator {
 // Сброс стилей невалидности формы при закрытии попапа до сабмита (установлен для обеих попапов в функции openPopup в index.js)
   resetClosedForm() {
     this._inputList.forEach((input) => {
-      this._removeInvalidStyle(input);
+      this._hideInputError(input);
     });
     this._disableSubmitButton();
   }
@@ -31,10 +30,6 @@ export class FormValidator {
     input.classList.add(this._obj.inputErrorClass);
     errorElement.classList.add(this._obj.errorClass);
     errorElement.textContent = errorMessage;
-  }
-// Ф-ция скрытия невалидности элемента
-  _hideInputError(input) {
-    this._removeInvalidStyle(input);
   }
 // Ф-ция проверки элемента в форма на невалидность и вывод сообщения об ошибке
   _isValid(input) {

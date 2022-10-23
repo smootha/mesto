@@ -32,14 +32,11 @@ const buttonSubmitAddCard = popupAddCard.querySelector('.form__submit');
 const cardsGallery = document.querySelector('.cards');
 // Объект настроек валидации
 const validationObject = {
-  formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit',
   inactiveButtonClass: 'form__submit_inactive',
   inputErrorClass: 'form__input_invalid',
-  errorClass: 'form__error_visible',
-  closeButtonSelector: '.close-button',
-  formErrorSelector: '.form__error'
+  errorClass: 'form__error_visible'
 };
 //Создание валидации
 const profileFormValidation = new FormValidator(validationObject, popupEditProfile);
@@ -63,10 +60,10 @@ function closeByEsc(evt) {
 function openPopup(popup) {
   //Сбрасывают стили невалидности при закрытии формы
   switch (popup) {
-    case (popup === popupEditProfile) :
+    case popupEditProfile :
       profileFormValidation.resetClosedForm();
       break;
-    case (popup === popupAddCard) :
+    case popupAddCard :
       cardFormValidation.resetClosedForm();
       break;
     default:
