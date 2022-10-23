@@ -46,12 +46,6 @@ const profileFormValidation = new FormValidator(validationObject, popupEditProfi
 const cardFormValidation = new FormValidator(validationObject, popupAddCard);
 profileFormValidation.enableValidation();
 cardFormValidation.enableValidation();
-
-//Дезактивация сабмита
-function addInactiveStatus(button) {
-  button.classList.add('form__submit_inactive');
-  button.disabled = true;
-}
 //Функция добавления карточки в галлерею
 function renderCard(item) {
   const newCard = new Card(item.name, item.link);
@@ -68,9 +62,16 @@ function closeByEsc(evt) {
 //Открытие Popup
 function openPopup(popup) {
   //Сбрасывают стили невалидности при закрытии формы
-  profileFormValidation.resetClosedForm();
-  cardFormValidation.resetClosedForm();
-
+  switch (popup) {
+    case (popup === popupEditProfile) :
+      profileFormValidation.resetClosedForm();
+      break;
+    case (popup === popupAddCard) :
+      cardFormValidation.resetClosedForm();
+      break;
+    default:
+      break;
+  }
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
 }
@@ -92,7 +93,7 @@ function editProfileSubmitHandler(evt) {
   evt.preventDefault();
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
-  addInactiveStatus(buttonSubmitEditProfile);
+  profileFormValidation.resetClosedForm();
   closePopup(popupEditProfile);
 }
 // createCard PopUp Submit
@@ -103,8 +104,7 @@ function addCardSubmitHandler(evt) {
     link: cardLinkInput.value
   }
   renderCard(object);
-  formElementAdd.reset();
-  addInactiveStatus(buttonSubmitAddCard);
+  cardFormValidation.resetClosedForm();
   closePopup(popupAddCard);
 }
 //Обработчик на все задники
