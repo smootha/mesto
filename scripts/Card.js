@@ -1,6 +1,4 @@
-export { Card };
-
-class Card {
+export class Card {
   constructor(data, templateSelector, handlePopupImageClick) {
     this._name = data.name;
     this._image = data.link;
