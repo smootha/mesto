@@ -1,5 +1,5 @@
 import { initialCards } from './initialCards.js';
-import { Card, popupCard, popupCardImage, popupCardTitle } from './Card.js';
+import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
 // Popup Element Arrays
@@ -26,7 +26,10 @@ const cardNameInput = popupAddCard.querySelector('.form__input_data_place');
 const cardLinkInput = popupAddCard.querySelector('.form__input_data_link');
 // Галлерея карточек
 const cardsGallery = document.querySelector('.cards');
-const cardsTemplate = document.querySelector('.cards__template');
+// Card PopUp Basics
+const popupCard = document.querySelector('.preview');
+const popupCardImage = popupCard.querySelector('.preview__image');
+const popupCardTitle = popupCard.querySelector('.preview__caption');
 // Объект настроек валидации
 const validationObject = {
   inputSelector: '.form__input',
@@ -49,7 +52,7 @@ function handlePopupImageClick (name, link) {
 }
 // Функция создания карточки
 function createCard(data) {
-  const card = new Card(data, cardsTemplate, handlePopupImageClick);
+  const card = new Card(data, '.cards__template', handlePopupImageClick);
   const newCard = card.generateCard();
   return newCard;
 }
@@ -66,17 +69,6 @@ function closeByEsc(evt) {
 }
 //Открытие Popup
 function openPopup(popup) {
-  //Сбрасывают стили невалидности при закрытии формы
-  switch (popup) {
-    case popupEditProfile :
-      profileFormValidation.resetClosedForm();
-      break;
-    case popupAddCard :
-      cardFormValidation.resetClosedForm();
-      break;
-    default:
-      break;
-  }
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
 }
@@ -109,7 +101,6 @@ function addCardSubmitHandler(evt) {
     link: cardLinkInput.value
   }
   prependCard(object);
-  cardFormValidation.resetClosedForm();
   closePopup(popupAddCard);
 }
 //Обработчик на все задники
@@ -126,6 +117,7 @@ buttonsClose.forEach((closeButton) => {
 buttonEditProfile.addEventListener('click', () => {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent;
+  profileFormValidation.resetClosedForm();
   openPopup(popupEditProfile);
 });
 // EditProfile PopUp Submit
@@ -133,6 +125,7 @@ formElementProfile.addEventListener('submit', editProfileSubmitHandler);
 // AddCard PopUp Open
 buttonAddCard.addEventListener('click', () => {
   formElementAdd.reset();
+  cardFormValidation.resetClosedForm();
   openPopup(popupAddCard);
 });
 // AddCard PopUp Submit

@@ -1,19 +1,15 @@
-export { Card, popupCard, popupCardImage, popupCardTitle };
-// Card PopUp Basics
-const popupCard = document.querySelector('.preview');
-const popupCardImage = popupCard.querySelector('.preview__image');
-const popupCardTitle = popupCard.querySelector('.preview__caption');
+export { Card };
 
 class Card {
   constructor(data, templateSelector, handlePopupImageClick) {
     this._name = data.name;
     this._image = data.link;
-    this._cardsTemplate = templateSelector;
+    this._templateElement = document.querySelector(templateSelector);
     this._handlePopupImageClick = handlePopupImageClick;
   }
 //Клонирование темплейта карточки
   _getTemplate() {
-    const cardElement = this._cardsTemplate.content.querySelector('.cards__item').cloneNode(true);
+    const cardElement = this._templateElement.content.querySelector('.cards__item').cloneNode(true);
     return cardElement;
   }
 //Лайк

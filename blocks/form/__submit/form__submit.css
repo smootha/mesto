@@ -6,9 +6,9 @@
   line-height: 1.21;
   margin-top: 48px;
   border-radius: 2px;
-  -webkit-transition: opacity .3s, color .5s, background-color .5s;
-  -o-transition: opacity .3s, color .5s, background-color .5s;
-  transition: opacity .3s, color .5s, background-color .5s;
+  -webkit-transition: opacity .3s, color .3s, background-color .3s;
+  -o-transition: opacity .3s, color .3s, background-color .3s;
+  transition: opacity .3s, color .3s, background-color .3s;
   border: none;
   padding: 14px;
 }
