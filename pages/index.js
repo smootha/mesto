@@ -1,46 +1,27 @@
-import { initialCards } from './initialCards.js';
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
+import {
+  popups,
+  buttonsClose,
+  popupEditProfile,
+  buttonEditProfile,
+  formElementProfile,
+  nameInput,
+  jobInput,
+  userName,
+  userJob,
+  buttonSubmitEditProfile,
+  popupAddCard,
+  buttonAddCard,
+  formElementAdd,
+  cardNameInput,
+  cardLinkInput,
+  buttonSubmitAddCard,
+  cardsGallery,
+  validationObject,
+  initialCards
+  } from '../utils/constants.js';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
 
-// Popup Element Arrays
-const popups = Array.from(document.querySelectorAll('.popup'));
-const buttonsClose = Array.from(document.querySelectorAll('.close-button'));
-// Edit Profile PopUp Basics
-const popupEditProfile = document.querySelector('.edit-profile');
-const buttonEditProfile = document.querySelector('.profile__edit-button');
-
-const formElementProfile = popupEditProfile.querySelector('.form');
-
-const nameInput = popupEditProfile.querySelector('.form__input_data_name');
-const jobInput = popupEditProfile.querySelector('.form__input_data_job');
-
-const userName = document.querySelector('.profile__name');
-const userJob = document.querySelector('.profile__job');
-
-const buttonSubmitEditProfile = popupEditProfile.querySelector('.form__submit');
-// AddCard PopUp Basics
-const popupAddCard = document.querySelector('.add-card');
-
-const buttonAddCard = document.querySelector('.profile__add-button');
-const formElementAdd = popupAddCard.querySelector('.form');
-
-const cardNameInput = popupAddCard.querySelector('.form__input_data_place');
-const cardLinkInput = popupAddCard.querySelector('.form__input_data_link');
-
-const buttonSubmitAddCard = popupAddCard.querySelector('.form__submit');
-// Галлерея карточек
-const cardsGallery = document.querySelector('.cards');
-// Объект настроек валидации
-const validationObject = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__submit',
-  inactiveButtonClass: 'form__submit_inactive',
-  inputErrorClass: 'form__input_invalid',
-  errorClass: 'form__error_visible',
-  closeButtonSelector: '.close-button',
-  formErrorSelector: '.form__error'
-};
 //Создание валидации
 const profileFormValidation = new FormValidator(validationObject, popupEditProfile);
 const cardFormValidation = new FormValidator(validationObject, popupAddCard);
@@ -81,7 +62,7 @@ function closePopup(popup) {
 }
 //Закрытие Popup кликом по заднику
 function closePopupByOverlay(popup) {
-  popup.addEventListener(('click'), (evt) => {
+  popup.addEventListener(('click'), evt => {
     if (evt.target.classList.contains('popup')) {
     closePopup(popup);
     }
@@ -108,12 +89,12 @@ function addCardSubmitHandler(evt) {
   closePopup(popupAddCard);
 }
 //Обработчик на все задники
-popups.forEach((popup) => {
+popups.forEach(popup => {
   closePopupByOverlay(popup);
 });
 //Обработчик на все кнопки закрытия Попапов
-buttonsClose.forEach((closeButton) => {
-  closeButton.addEventListener('click', (evt) => {
+buttonsClose.forEach(closeButton => {
+  closeButton.addEventListener('click', evt => {
     closePopup(evt.target.closest('.popup'));
   });
 });
@@ -133,6 +114,6 @@ buttonAddCard.addEventListener('click', () => {
 // AddCard PopUp Submit
 formElementAdd.addEventListener('submit', addCardSubmitHandler);
 // Add initial cards
-initialCards.forEach((item) => {
+initialCards.forEach(item => {
   renderCard(item);
 });

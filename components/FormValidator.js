@@ -46,7 +46,7 @@ export class FormValidator {
   }
 // Проверка невалидности всех элементов формы
   _hasInvalidInput() {
-    return this._inputList.some((input) => {
+    return this._inputList.some(input => {
       return !input.validity.valid;
     });
   }
@@ -69,7 +69,7 @@ export class FormValidator {
 //Установка слушателей на все элементы формы
   _setEventListeners() {
     this._toggleSubmitButton();
-    this._inputList.forEach((input) => {
+    this._inputList.forEach(input => {
       this._setInputEventListener(input);
     });
   }
