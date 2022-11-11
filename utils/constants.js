@@ -26,6 +26,10 @@ export const cardLinkInput = popupAddCard.querySelector('.form__input_data_link'
 export const buttonSubmitAddCard = popupAddCard.querySelector('.form__submit');
 // Галлерея карточек
 export const cardsGallery = document.querySelector('.cards');
+// Card PopUp Basics
+export const popupCard = document.querySelector('.preview');
+export const popupCardImage = popupCard.querySelector('.preview__image');
+export const popupCardTitle = popupCard.querySelector('.preview__caption');
 // Объект настроек валидации
 export const validationObject = {
   formSelector: '.form',

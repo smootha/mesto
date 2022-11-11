@@ -21,7 +21,9 @@ import {
   } from '../utils/constants.js';
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
 
+const initialCardsList = new Section(initialCards, '.cards');
 //Создание валидации
 const profileFormValidation = new FormValidator(validationObject, popupEditProfile);
 const cardFormValidation = new FormValidator(validationObject, popupAddCard);
@@ -33,12 +35,16 @@ function addInactiveStatus(button) {
   button.classList.add('form__submit_inactive');
   button.disabled = true;
 }
+
+
 //Функция добавления карточки в галлерею
 function renderCard(item) {
-  const newCard = new Card(item.name, item.link);
+  const newCard = new Card(item);
   const cardElement = newCard.generateCard();
   cardsGallery.prepend(cardElement);
 }
+
+
 //Закрытие клавишей Esc
 function closeByEsc(evt) {
   if(evt.key === 'Escape') {
@@ -114,6 +120,4 @@ buttonAddCard.addEventListener('click', () => {
 // AddCard PopUp Submit
 formElementAdd.addEventListener('submit', addCardSubmitHandler);
 // Add initial cards
-initialCards.forEach(item => {
-  renderCard(item);
-});
+initialCardsList.renderItems();

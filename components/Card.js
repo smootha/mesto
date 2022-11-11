@@ -1,12 +1,13 @@
-// Card PopUp Basics
-const popupCard = document.querySelector('.preview');
-const popupCardImage = popupCard.querySelector('.preview__image');
-const popupCardTitle = popupCard.querySelector('.preview__caption');
+import {
+  popupCard,
+  popupCardImage,
+  popupCardTitle
+} from '../utils/constants.js';
 
 export class Card {
-  constructor(name, image) {
+  constructor({ name, link }) {
     this._name = name;
-    this._image = image;
+    this._image = link;
   }
 //Клонирование темплейта карточки
   _getTemplate() {
@@ -18,28 +19,28 @@ export class Card {
     this._newCard.querySelector('.cards__like').classList.toggle('cards__like_active');
   }
 //Удаление
-_handleDeleteClick() {
+  _handleDeleteClick() {
   this._newCard.remove();
-}
+  }
 //Открытие Попапа
-_handlePopupImageClick() {
-  popupCardTitle.textContent = this._name;
-  popupCardImage.alt = this._name;
-  popupCardImage.src = this._image;
-  openPopup(popupCard);
-}
+  _handlePopupImageClick() {
+    popupCardTitle.textContent = this._name;
+    popupCardImage.alt = this._name;
+    popupCardImage.src = this._image;
+    openPopup(popupCard);
+  }
 //Установка слушателей: попап карточки, удаление, лайк соответственно
-_setEventListeners() {
-  this._newCard.querySelector('.cards__image').addEventListener('click', () => {
-    this._handlePopupImageClick();
-  });
-  this._newCard.querySelector('.cards__delete').addEventListener('click', () => {
-    this._handleDeleteClick();
-  });
-  this._newCard.querySelector('.cards__like').addEventListener('click', () => {
-    this._handleLikeClick();
-  });
-}
+  _setEventListeners() {
+    this._newCard.querySelector('.cards__image').addEventListener('click', () => {
+      this._handlePopupImageClick();
+    });
+    this._newCard.querySelector('.cards__delete').addEventListener('click', () => {
+      this._handleDeleteClick();
+    });
+    this._newCard.querySelector('.cards__like').addEventListener('click', () => {
+      this._handleLikeClick();
+    });
+  }
 //Создание карточки
   generateCard() {
     this._newCard = this._getTemplate();
