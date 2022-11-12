@@ -1,15 +1,14 @@
 import { Card } from "./Card.js";
 
 export class Section {
-  constructor( items, containerSelector) {
+  constructor({ items, renderer }, containerSelector) {
     this._items = items;
+    this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
   renderItems() {
     this._items.forEach(item => {
-      const card = new Card(item);
-      const newCard = card.generateCard();
-      this.setItems(newCard);
+      this._renderer(item);
     });
   }
   setItems(element) {
