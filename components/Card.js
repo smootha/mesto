@@ -1,8 +1,4 @@
-import {
-  popupCard,
-  popupCardImage,
-  popupCardTitle
-} from '../utils/constants.js';
+import { popupPreview } from '../pages/index.js';
 
 export class Card {
   constructor({ name, link }) {
@@ -24,10 +20,7 @@ export class Card {
   }
 //Открытие Попапа
   _handlePopupImageClick() {
-    popupCardTitle.textContent = this._name;
-    popupCardImage.alt = this._name;
-    popupCardImage.src = this._image;
-    openPopup(popupCard);
+    popupPreview.open({ name: this._name, link: this._image });
   }
 //Установка слушателей: попап карточки, удаление, лайк соответственно
   _setEventListeners() {
