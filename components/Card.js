@@ -1,9 +1,9 @@
-import { popupPreview } from '../pages/index.js';
-
 export class Card {
-  constructor({ name, link }) {
-    this._name = name;
-    this._image = link;
+  constructor(data, callback) {
+    this._obj = data;
+    this._name = data.name;
+    this._image = data.link;
+    this._handleCardClick = callback;
   }
 //Клонирование темплейта карточки
   _getTemplate() {
@@ -18,14 +18,10 @@ export class Card {
   _handleDeleteClick() {
   this._newCard.remove();
   }
-//Открытие Попапа
-  _handlePopupImageClick() {
-    popupPreview.open({ name: this._name, link: this._image });
-  }
 //Установка слушателей: попап карточки, удаление, лайк соответственно
   _setEventListeners() {
     this._newCard.querySelector('.cards__image').addEventListener('click', () => {
-      this._handlePopupImageClick();
+      this._handleCardClick(this._obj);
     });
     this._newCard.querySelector('.cards__delete').addEventListener('click', () => {
       this._handleDeleteClick();

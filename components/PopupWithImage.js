@@ -5,10 +5,10 @@ export class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
   }
-  open(newData) {
-    popupCardTitle.textContent = newData.name;
-    popupCardImage.alt = newData.name;
-    popupCardImage.src = newData.link;
+  open({ name, link }) {
+    popupCardTitle.textContent = name;
+    popupCardImage.alt = name;
+    popupCardImage.src = link;
     super.open();
   }
 }
