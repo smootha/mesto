@@ -1,9 +1,17 @@
 export class Card {
+<<<<<<< HEAD:scripts/Card.js
   constructor(data, templateSelector, handlePopupImageClick) {
     this._name = data.name;
     this._image = data.link;
     this._templateElement = document.querySelector(templateSelector);
     this._handlePopupImageClick = handlePopupImageClick;
+=======
+  constructor(data, callback) {
+    this._obj = data;
+    this._name = data.name;
+    this._image = data.link;
+    this._handleCardClick = callback;
+>>>>>>> develop:src/components/Card.js
   }
 //Клонирование темплейта карточки
   _getTemplate() {
@@ -15,8 +23,9 @@ export class Card {
     this._like.classList.toggle('cards__like_active');
   }
 //Удаление
-_handleDeleteClick() {
+  _handleDeleteClick() {
   this._newCard.remove();
+<<<<<<< HEAD:scripts/Card.js
   this._newCard = null;
 }
 //Установка слушателей: попап карточки, удаление, лайк соответственно
@@ -31,6 +40,21 @@ _setEventListeners() {
     this._handleLikeClick();
   });
 }
+=======
+  }
+//Установка слушателей: попап карточки, удаление, лайк соответственно
+  _setEventListeners() {
+    this._newCard.querySelector('.cards__image').addEventListener('click', () => {
+      this._handleCardClick(this._obj);
+    });
+    this._newCard.querySelector('.cards__delete').addEventListener('click', () => {
+      this._handleDeleteClick();
+    });
+    this._newCard.querySelector('.cards__like').addEventListener('click', () => {
+      this._handleLikeClick();
+    });
+  }
+>>>>>>> develop:src/components/Card.js
 //Создание карточки
   generateCard() {
     this._newCard = this._getTemplate();
