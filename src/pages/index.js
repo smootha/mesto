@@ -7,6 +7,8 @@ import {
   jobInput,
   buttonSubmitEditProfile,
   popupAddCard,
+  popupCardTitle,
+  popupCardImage,
   buttonAddCard,
   formElementAdd,
   buttonSubmitAddCard,
@@ -32,7 +34,7 @@ popupProfile.setEventListeners();
 const popupCards = new PopupWithForm(addCardSubmitHandler, '.add-card');
 popupCards.setEventListeners();
 // Попап просмотра картинок
-export const popupPreview = new PopupWithImage('.preview');
+export const popupPreview = new PopupWithImage('.preview', popupCardTitle, popupCardImage);
 popupPreview.setEventListeners();
 // Класс изначальных карточек
 const initialCardsList = new Section({
