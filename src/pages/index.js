@@ -34,15 +34,13 @@ popupProfile.setEventListeners();
 const popupCards = new PopupWithForm(addCardSubmitHandler, '.add-card');
 popupCards.setEventListeners();
 // Попап просмотра картинок
-export const popupPreview = new PopupWithImage('.preview', popupCardTitle, popupCardImage);
+const popupPreview = new PopupWithImage('.preview', popupCardTitle, popupCardImage);
 popupPreview.setEventListeners();
 // Класс изначальных карточек
-const initialCardsList = new Section({
-  items: initialCards,
+const cardsList = new Section({
+  data: initialCards,
   renderer: (item) => {
-    const initialCard = new Card(item, handleCardClick);
-    const newInitialCard = initialCard.generateCard();
-    initialCardsList.setItems(newInitialCard);
+    cardsList.setItems(createCard(item));
   }
 }, '.cards');
 // Создание валидации
@@ -50,15 +48,16 @@ const profileFormValidation = new FormValidator(validationObject, popupEditProfi
 const cardFormValidation = new FormValidator(validationObject, popupAddCard);
 profileFormValidation.enableValidation();
 cardFormValidation.enableValidation();
-// Дезактивация сабмита
-function addInactiveStatus(button) {
-  button.classList.add('form__submit_inactive');
-  button.disabled = true;
+// Ф-ция создания карточки
+function createCard(item) {
+  const card = new Card(item, '.cards__template', handleCardClick);
+  const newCardElement = card.generateCard();
+  return newCardElement;
 }
 // Callback сабмита измненения Профиля
 function editProfileSubmitHandler({name, comment}) {
   userInfo.setUserInfo(name, comment);
-  addInactiveStatus(buttonSubmitEditProfile);
+  profileFormValidation.resetClosedForm();
 }
 // Callback сабмита создания карты
 function addCardSubmitHandler({place, url}) {
@@ -66,16 +65,8 @@ function addCardSubmitHandler({place, url}) {
     name: place,
     link: url
   }
-  const cardSubmit = new Section({
-    items: [object],
-    renderer: (item) => {
-      const card = new Card(item, handleCardClick);
-      const newCard = card.generateCard();
-      cardSubmit.setItems(newCard);
-    }
-  }, '.cards');
-  cardSubmit.renderItems();
-  addInactiveStatus(buttonSubmitAddCard);
+  cardsList.setItems(createCard(object));
+  cardFormValidation.resetClosedForm();
 }
 // Callback клика по картинкам
 function handleCardClick({name, link}) {
@@ -94,5 +85,5 @@ buttonAddCard.addEventListener('click', () => {
   cardFormValidation.resetClosedForm();
   popupCards.open();
 });
-// Добавление базовых карточек
-initialCardsList.renderItems();
+// Отрисовка карточек
+cardsList.renderItems();
