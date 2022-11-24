@@ -5,13 +5,11 @@ import {
   buttonEditProfile,
   nameInput,
   jobInput,
-  buttonSubmitEditProfile,
   popupAddCard,
   popupCardTitle,
   popupCardImage,
   buttonAddCard,
   formElementAdd,
-  buttonSubmitAddCard,
   validationObject,
   initialCards
   } from '../utils/constants.js';
@@ -55,8 +53,8 @@ function createCard(item) {
   return newCardElement;
 }
 // Callback сабмита измненения Профиля
-function editProfileSubmitHandler({name, comment}) {
-  userInfo.setUserInfo(name, comment);
+function editProfileSubmitHandler({name, job}) {
+  userInfo.setUserInfo(name, job);
   profileFormValidation.resetClosedForm();
 }
 // Callback сабмита создания карты
@@ -75,8 +73,7 @@ function handleCardClick({name, link}) {
 // EditProfile PopUp Open
 buttonEditProfile.addEventListener('click', () => {
   profileFormValidation.resetClosedForm();
-  nameInput.value = userInfo.getUserInfo().name;
-  jobInput.value = userInfo.getUserInfo().job;
+  popupProfile.setInputValues(userInfo.getUserInfo());
   popupProfile.open();
 });
 // AddCard PopUp Open
