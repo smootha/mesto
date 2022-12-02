@@ -1,11 +1,12 @@
 export class Card {
-  constructor(data, templateSelector, callback) {
+  constructor(data, templateSelector, callbackPreview, callbackDelete) {
     this._obj = data;
     this._name = data.name;
     this._image = data.link;
+    this._id = data.id;
     this._templateSelector = templateSelector;
-    this._handleCardClick = callback;
-
+    this._handleCardClick = callbackPreview;
+    this._handleDeleteClick = callbackDelete;
   }
 //Клонирование темплейта карточки
   _getTemplate() {
@@ -17,9 +18,10 @@ export class Card {
     this._cardLike.classList.toggle('cards__like_active');
   }
 //Удаление
-  _handleDeleteClick() {
+  /*_handleDeleteClick() {
+
   this._newCard.remove();
-  }
+  }*/
 //Установка слушателей: попап карточки, удаление, лайк соответственно
   _setEventListeners() {
     this._cardImage.addEventListener('click', () => {

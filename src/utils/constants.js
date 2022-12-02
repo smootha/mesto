@@ -1,6 +1,12 @@
-// Popup Element Arrays
-export const popups = Array.from(document.querySelectorAll('.popup'));
-export const buttonsClose = Array.from(document.querySelectorAll('.close-button'));
+// API config
+export const apiConfig = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-54/',
+  headers: {
+    'Content-type': 'application/json',
+    authorization: '49831d17-f3f1-4637-907e-4e644dcd95e5'
+  }
+}
+
 // Edit Profile PopUp Basics
 export const popupEditProfile = document.querySelector('.edit-profile');
 export const buttonEditProfile = document.querySelector('.profile__edit-button');
@@ -14,6 +20,11 @@ export const userName = document.querySelector('.profile__name');
 export const userJob = document.querySelector('.profile__job');
 
 export const buttonSubmitEditProfile = popupEditProfile.querySelector('.form__submit');
+//Edit Avatar Popup Basics
+export const popupEditAvatar = document.querySelector('.edit-avatar');
+export const formEditAvatar = popupEditAvatar.querySelector('.form');
+export const avatarOverlay = document.querySelector('.profile__avatar-overlay');
+export const avatar = document.querySelector('.profile__avatar');
 // AddCard PopUp Basics
 export const popupAddCard = document.querySelector('.add-card');
 
@@ -24,6 +35,9 @@ export const cardNameInput = popupAddCard.querySelector('.form__input_data_place
 export const cardLinkInput = popupAddCard.querySelector('.form__input_data_link');
 
 export const buttonSubmitAddCard = popupAddCard.querySelector('.form__submit');
+// Popup подтверждения удаления карточки
+export const popupDeleteCard = document.querySelector('.delete-card');
+export const buttonSubmitDeleteCard = popupDeleteCard.querySelector('.form__submit');
 // Галлерея карточек
 export const cardsGallery = document.querySelector('.cards');
 // Card PopUp Basics

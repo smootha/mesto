@@ -16,18 +16,20 @@
 /* Form */
 @import url('../blocks/form/__input/form__input.css');
 @import url('../blocks/form/__input/_data/form__input_data_name.css');
-@import url('../blocks/form/__input/_data/form__input_data_job.css');
+@import url('../blocks/form/__input/_data/form__input_data_about.css');
 @import url('../blocks/form/__submit/form__submit.css');
 @import url('../blocks/form/__submit/_inactive/form__submit_inactive.css');
 @import url('../blocks/form/__input/_data/form__input_data_place.css');
 @import url('../blocks/form/__input/_data/form__input_data_link.css');
 @import url('../blocks/form/__input/_invalid/form__input_invalid.css');
+@import url('../blocks/form/__input/_data/form__input_data_avatar.css');
 @import url('../blocks/form/__error/form__error.css');
 @import url('../blocks/form/__error/_visible/form__error_visible.css');
 @import url('../blocks/form/__error/_name-input/form__error_name-input.css');
-@import url('../blocks/form/__error/_job-input/form__error_job-input.css');
+@import url('../blocks/form/__error/_about-input/form__error_about-input.css');
 @import url('../blocks/form/__error/_place-input/form__error_place-input.css');
 @import url('../blocks/form/__error/_link-input/form__error_link-input.css');
+@import url('../blocks/form/__error/_avatar-input/form__error_avatar-input.css');
 
 /* Popup */
 @import url('../blocks/popup/popup.css');
@@ -56,7 +58,7 @@
 @import url('../blocks/profile/__avatar-overlay/profile__avatar-overlay.css');
 @import url('../blocks/profile/__info/profile__info.css');
 @import url('../blocks/profile/__name/profile__name.css');
-@import url('../blocks/profile/__job/profile__job.css');
+@import url('../blocks/profile/__about/profile__about.css');
 @import url('../blocks/profile/__edit-button/profile__edit-button.css');
 @import url('../blocks/profile/__add-button/profile__add-button.css');
 
@@ -67,7 +69,9 @@
 @import url('../blocks/cards/__image/cards__image.css');
 @import url('../blocks/cards/__text/cards__text.css');
 @import url('../blocks/cards/__name/cards__name.css');
+@import url('../blocks/cards/__like-area/cards__like-area.css');
 @import url('../blocks/cards/__like/cards__like.css');
+@import url('../blocks/cards/__like-counter/cards__like-counter.css');
 @import url('../blocks/cards/__delete/cards__delete.css');
 @import url('../blocks/cards/__like/_active/cards__like_active.css');
 

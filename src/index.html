@@ -17,9 +17,21 @@
         <form class="form" name="edit-profile" id="edit-profile" novalidate>
           <input id="name-input" class="form__input form__input_data_name" type="text" name="name" required minlength="2" maxlength="40">
           <span class="form__error form__error_name-input"></span>
-          <input id="job-input" class="form__input form__input_data_job" type="text" name="job" required  minlength="2" maxlength="200">
-          <span class="form__error form__error_job-input"></span>
+          <input id="about-input" class="form__input form__input_data_about" type="text" name="about" required minlength="2" maxlength="200">
+          <span class="form__error form__error_about-input"></span>
           <button class="form__submit form__submit_popup_edit-profile" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </section>
+    <!-- Popup изменения аватара -->
+    <section class="popup edit-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button close-button button" type="button"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="form" name="edit-avatar" id="edit-avatar" novalidate>
+          <input id="avatar-input" class="form__input form__input_data_avatar" type="url" name="avatar" placeholder="Ссылка на картинку" required>
+          <span class="form__error form__error_avatar-input"></span>
+          <button class="form__submit form__submit_popup_edit-avatar" type="submit">Сохранить</button>
         </form>
       </div>
     </section>
@@ -37,6 +49,17 @@
         </form>
       </div>
     </section>
+    <!-- Popup удаления карточки -->
+    <section class="popup delete-card">
+      <div class="popup__container">
+        <button class="popup__close-button close-button button" type="button"></button>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <form class="form" name="delete-photo" id="delete-photo" novalidate>
+          <button class="form__submit form__submit_popup_delete-photo" type="submit">Да</button>
+        </form>
+      </div>
+    </section>
+
     <!-- Popup карточки -->
     <section class="popup preview">
       <figure class="preview__image-holder">
@@ -54,11 +77,11 @@
       <section class="profile">
         <div class="profile__card">
           <div class="profile__avatar-overlay"></div>
-          <img class="profile__avatar" src="<%=require('./images/William.png')%>" alt="Аватар пользователя">
+          <img class="profile__avatar" src="" alt="Аватар пользователя">
           <div class="profile__info">
-            <h1 class="profile__name">Уильям П. Финс</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-button button" type="button"></button>
-            <p class="profile__job">Основатель Супер Клуба Путешественников</p>
+            <p class="profile__about"></p>
           </div>
         </div>
         <button class="profile__add-button button" type="button"></button>
@@ -80,7 +103,10 @@
         <button class="cards__delete button" type="button"></button>
         <div class="cards__text">
           <h2 class="cards__name"></h2>
-          <button class="cards__like button" type="button"></button>
+          <div class="cards__like-area">
+            <button class="cards__like button" type="button"></button>
+            <p class="cards__like-counter">0</p>
+          </div>
         </div>
       </li>
     </template>
