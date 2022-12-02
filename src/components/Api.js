@@ -3,16 +3,18 @@ export class Api {
     this._url = url,
     this._headers = headers
   }
+// Функция проверки ответа с сервера
+_checkResponseStatus(response) {
+  return response.ok ?
+    response.json()
+    : Promise.reject(`Error: ${response.status} ${response.statusText}`);
+}
 // Получение данных пользователя с сервера
   recieveUserData() {
     return fetch(`${this._url}users/me`, {
       headers: this._headers
     })
-      .then((resp) => {
-        return resp.ok ?
-          resp.json()
-          : Promise.reject(`Error: ${resp.status} ${resp.statusText}`);
-      })
+      .then(this._checkResponseStatus);
   }
 // Отправление данных пользователя на сервер
   sendUserData(name, about) {
@@ -24,13 +26,9 @@ export class Api {
         about: about
       })
     })
-      .then((resp) => {
-        return resp.ok ?
-          resp.json()
-          : Promise.reject(`Error: ${resp.status} ${resp.statusText}`);
-      });
+      .then(this._checkResponseStatus);
   }
-
+// Отправление аватара пользователя на сервер
   sendNewAvatar(avatar) {
     return fetch(`${this._url}users/me/avatar`, {
       method: 'PATCH',
@@ -39,22 +37,14 @@ export class Api {
         avatar: avatar
       })
     })
-      .then((resp) => {
-        return resp.ok ?
-          resp.json()
-          : Promise.reject(`Error: ${resp.status} ${resp.statusText}`);
-      });
+      .then(this._checkResponseStatus);
   }
 
   recieveCardsData() {
     return fetch(`${this._url}cards`, {
       headers: this._headers
     })
-      .then((resp) => {
-        return resp.ok ?
-          resp.json()
-          : Promise.reject(`Error: ${resp.status} ${resp.statusText}`);
-      })
+      .then(this._checkResponseStatus)
   }
 
   sendNewCard() {
