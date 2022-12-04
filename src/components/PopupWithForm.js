@@ -6,7 +6,9 @@ export class PopupWithForm extends Popup {
     this._form = this._popup.querySelector('.form');
     this._callback = callback;
     this._inputList = this._form.querySelectorAll('.form__input');
+    this._submitButton = this._form.querySelector('.form__submit');
   }
+
   _getInputValues() {
     this._formValues = {};
     this._inputList.forEach(input => {
@@ -14,6 +16,13 @@ export class PopupWithForm extends Popup {
     });
     return this._formValues;
   }
+
+  enableLoadingStatus(boole) {
+    boole ?
+      this._submitButton.textContent = 'Загружается...'
+      : this._submitButton.textContent = 'Сохранить';
+  }
+
   setInputValues(data) {
     this._inputList.forEach(input => {
       input.value = data[input.name];
@@ -24,7 +33,6 @@ export class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._callback(this._getInputValues());
-      this.close();
     });
   }
   close() {

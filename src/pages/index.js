@@ -12,7 +12,6 @@ import {
   formEditAvatar,
   formElementAdd,
   validationObject,
-  initialCards,
   apiConfig
   } from '../utils/constants.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
@@ -94,24 +93,36 @@ function createCard(data) {
 }
 // Callback сабмита измненения Профиля
 function editProfileSubmitHandler({name, about}) {
+  popupProfile.enableLoadingStatus(true);
   api.sendUserData(name, about)
     .then((userData) => {
       userInfo.setUserInfo(userData);
     })
-    .catch(logError);
-  profileFormValidation.resetClosedForm();
+    .catch(logError)
+    .finally(() => {
+      popupProfile.close();
+      popupProfile.enableLoadingStatus(false);
+      profileFormValidation.resetClosedForm();
+    });
+
 }
 // Callback сабмита изменения Аватара
 function editAvatarSubmitHandler({ avatar }) {
+  popupAvatar.enableLoadingStatus(true);
   api.sendNewAvatar(avatar)
     .then((avatar) => {
       userInfo.setUserAvatar(avatar);
     })
-    .catch(logError);
-  avatarFormValidation.resetClosedForm();
+    .catch(logError)
+    .finally(() => {
+      popupAvatar.close();
+      popupAvatar.enableLoadingStatus(false);
+      avatarFormValidation.resetClosedForm();
+    });
 }
 // Callback сабмита создания карты
 function addCardSubmitHandler({place, url}) {
+  popupCards.enableLoadingStatus(true);
   const card = {
     name: place,
     link: url
@@ -121,7 +132,11 @@ function addCardSubmitHandler({place, url}) {
       cardsList.setItems(createCard(card));
     })
     .catch(logError)
-  cardFormValidation.resetClosedForm();
+    .finally(() => {
+      popupCards.close();
+      popupCards.enableLoadingStatus(false);
+      cardFormValidation.resetClosedForm();
+    });
 }
 
 // Callback сабмита подтверждения удаления
