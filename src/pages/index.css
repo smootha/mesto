@@ -72,6 +72,7 @@
 @import url('../blocks/cards/__like-area/cards__like-area.css');
 @import url('../blocks/cards/__like/cards__like.css');
 @import url('../blocks/cards/__like-counter/cards__like-counter.css');
+@import url('../blocks/cards/__like-counter/_visible/cards__like-counter_visible.css');
 @import url('../blocks/cards/__delete/cards__delete.css');
 @import url('../blocks/cards/__like/_active/cards__like_active.css');
 

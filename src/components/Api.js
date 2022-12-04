@@ -39,28 +39,40 @@ _checkResponseStatus(response) {
     })
       .then(this._checkResponseStatus);
   }
-
-  recieveCardsData() {
+// Загрузка карточек с сервера
+  getInitialCards() {
     return fetch(`${this._url}cards`, {
       headers: this._headers
     })
-      .then(this._checkResponseStatus)
+      .then(this._checkResponseStatus);
+  }
+// Отправка новой карточки на сервер
+  sendNewCard({ name, link }) {
+    return fetch(`${this._url}cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        link: link
+      })
+    })
+      .then(this._checkResponseStatus);
+  }
+// Удаление карточки с сервера
+  deleteCard(id) {
+    return fetch(`${this._url}cards/${id}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+      .then(this._checkResponseStatus);
   }
 
-  sendNewCard() {
+// Добавление лайка
+  addLikes() {
 
   }
-
-  deleteCard() {
-
-  }
-
-
-  countLikes() {
-
-  }
-
-  toggleLike() {
+// Удаление лайка
+  deleteLike() {
 
   }
 }
