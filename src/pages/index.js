@@ -44,12 +44,8 @@ popupWithConfirmation.setEventListeners();
 // Попап просмотра картинок
 const popupPreview = new PopupWithImage('.preview', popupCardTitle, popupCardImage);
 popupPreview.setEventListeners();
-// Класс изначальных карточек
-const cardsList = new Section({
-  renderer: (item) => {
-    cardsList.setItems(createCard(item));
-  }
-}, '.cards');
+// Класс добавления карточек в определенную секцию
+const cardsList = new Section('.cards');
 
 // Создание валидации
 const profileFormValidation = new FormValidator(validationObject, popupEditProfile);
@@ -65,19 +61,11 @@ const api = new Api(apiConfig);
 function logError(error) {
   console.log(error);
 }
-// Получение ID пользователя
-const id = api.recieveUserData()
-  .then((data) => {
-    return data;
-  })
-  .catch(logError);
-
-
 
 // Ф-ция создания карточки
-function createCard(data) {
+function createCard(data, userId) {
   const card = new Card({ data: data,
-                          userId: id,
+                          userId: userId,
                           handleCardClick: ({name, link}) => {
                             popupPreview.open({ name, link });
                           },
@@ -104,7 +92,6 @@ function editProfileSubmitHandler({name, about}) {
       popupProfile.enableLoadingStatus(false);
       profileFormValidation.resetClosedForm();
     });
-
 }
 // Callback сабмита изменения Аватара
 function editAvatarSubmitHandler({ avatar }) {
@@ -148,23 +135,18 @@ function deleteCardSubmitHandler(id, card) {
     .catch(logError);
 }
 
-// Загрузка данных пользователя с сервера
-api.recieveUserData()
-  .then((userData) => {
+//Загрузка данных пользователя и карточек для отрисовки страницы
+api.getInitialData()
+  .then((data) => {
+    const [userData, initialCards] = data;
+    const userId = userData._id;
     userInfo.setUserInfo(userData);
     userInfo.setUserAvatar(userData);
-  })
-  .catch(logError);
-// Отрисовка предзагруженных карточек
-api.getInitialCards()
-  .then((cards) => {
-    cards.forEach((card) => {
-      cardsList.setItems(createCard(card));
+    initialCards.forEach((card) => {
+      cardsList.setItems(createCard(card, userId));
     });
   })
-  .catch(logError);
-
-
+    .catch(logError);
 
 // EditProfile PopUp Open
 buttonEditProfile.addEventListener('click', () => {

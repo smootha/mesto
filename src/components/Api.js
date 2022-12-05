@@ -10,7 +10,7 @@ _checkResponseStatus(response) {
     : Promise.reject(`Error: ${response.status} ${response.statusText}`);
 }
 // Получение данных пользователя с сервера
-  recieveUserData() {
+  getUserData() {
     return fetch(`${this._url}users/me`, {
       headers: this._headers
     })
@@ -74,5 +74,10 @@ _checkResponseStatus(response) {
 // Удаление лайка
   deleteLike() {
 
+  }
+
+// Получение данных пользователя и предзагруженных карт
+  getInitialData() {
+    return Promise.all([this.getUserData(), this.getInitialCards()]);
   }
 }
