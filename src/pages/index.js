@@ -1,5 +1,4 @@
 import './index.css';
-
 import {
   avatarOverlay,
   popupEditProfile,
@@ -51,7 +50,7 @@ const cardFormValidation = new FormValidator(validationObject, popupAddCard);
 const api = new Api(apiConfig);
 // Callback показа ошибки сервера в консоли
 function logError(error) {
-  console.log(`Ошибочка вышла: ${error}`);
+  console.log(`${error}`);
 }
 // Ф-ция создания карточки
 function createCard(data, userId) {
@@ -109,7 +108,6 @@ function editAvatarSubmitHandler({ avatar }) {
       avatarFormValidation.resetClosedForm();
     });
 }
-
 // Callback сабмита подтверждения удаления
 function deleteCardSubmitHandler(id, card) {
   api.deleteCard(id)

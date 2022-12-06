@@ -28,7 +28,6 @@ export class Card {
     const cardElement = document.querySelector(this._templateSelector).content.querySelector('.cards__item').cloneNode(true);
     return cardElement;
   }
-
 //Установка слушателей: попап карточки, удаление, лайк соответственно
   _setEventListeners() {
     this._cardImage.addEventListener('click', () => {

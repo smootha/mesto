@@ -66,7 +66,6 @@ _checkResponseStatus(response) {
     })
       .then(this._checkResponseStatus);
   }
-
 // Добавление лайка
   addLike(id) {
     return fetch(`${this._url}cards/${id}/likes`, {
@@ -83,7 +82,6 @@ _checkResponseStatus(response) {
     })
       .then(this._checkResponseStatus);
   }
-
 // Получение данных пользователя и предзагруженных карт
   getInitialData() {
     return Promise.all([this.getUserData(), this.getInitialCards()]);
