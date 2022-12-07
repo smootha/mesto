@@ -8,8 +8,6 @@ import {
   buttonEditProfile,
   popupEditAvatar,
   popupAddCard,
-  popupCardTitle,
-  popupCardImage,
   buttonAddCard,
   formEditAvatar,
   formElementAdd,
@@ -41,10 +39,8 @@ popupAvatar.setEventListeners();
 const popupWithConfirmation = new PopupWithConfirmation(deleteCardSubmitHandler, '.delete-card');
 popupWithConfirmation.setEventListeners();
 // Попап просмотра картинок
-const popupPreview = new PopupWithImage('.preview', popupCardTitle, popupCardImage);
+const popupPreview = new PopupWithImage('.preview');
 popupPreview.setEventListeners();
-// Класс добавления карточек в определенную секцию
-const cardsList = new Section('.cards');
 // Создание валидации
 const profileFormValidation = new FormValidator(validationObject, popupEditProfile);
 const avatarFormValidation = new FormValidator(validationObject, popupEditAvatar);
@@ -121,6 +117,13 @@ api.getInitialData()
   .then((data) => {
     const [userData, initialCards] = data;
     const userId = userData._id;
+// Класс добавления карточек в определенную секцию
+    const cardsList = new Section({
+      data: initialCards,
+      renderer: (item) => {
+        cardsList.setItems(createCard(item, userId));
+      }
+    }, '.cards');
 // Попап добавления карточек
     const popupCards = new PopupWithForm(addCardSubmitHandler, '.add-card');
     popupCards.setEventListeners();
@@ -144,11 +147,8 @@ api.getInitialData()
 //Установка аватара и данных пользователя на странице
     userInfo.setUserInfo(userData);
     userInfo.setUserAvatar(userData);
-//Отрисовка карточек
-    initialCards.reverse().forEach((card) => {
-      cardsList.setItems(createCard(card, userId));
-    });
-
+//Рендер подгруженых карточек
+    cardsList.renderItems();
 // Слушатель на открытие popup изменения данных пользователя
     buttonEditProfile.addEventListener('click', () => {
       profileFormValidation.resetClosedForm();
@@ -173,4 +173,3 @@ api.getInitialData()
     cardFormValidation.enableValidation();
   })
     .catch(logError);
-
