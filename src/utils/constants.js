@@ -6,7 +6,6 @@ export const apiConfig = {
     authorization: '49831d17-f3f1-4637-907e-4e644dcd95e5'
   }
 }
-
 // Edit Profile PopUp Basics
 export const popupEditProfile = document.querySelector('.edit-profile');
 export const buttonEditProfile = document.querySelector('.profile__edit-button');

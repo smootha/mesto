@@ -16,7 +16,10 @@ export class PopupWithForm extends Popup {
     });
     return this._formValues;
   }
-
+//Функция для работы с таймером
+  _reset(form) {
+    form.reset();
+  }
   enableLoadingStatus(boole) {
     boole ?
       this._submitButton.textContent = 'Загружается...'
@@ -37,6 +40,7 @@ export class PopupWithForm extends Popup {
   }
   close() {
     super.close();
-    this._form.reset();
+    // Таймер, чтоб форма сбрасывалась только после ухода попапа в полную прозрачность
+    setTimeout(this._reset, 200, this._form);
   }
 }

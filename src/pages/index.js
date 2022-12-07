@@ -1,5 +1,8 @@
 import './index.css';
 import {
+  logError
+} from '../utils/utils.js'
+import {
   avatarOverlay,
   popupEditProfile,
   buttonEditProfile,
@@ -48,10 +51,6 @@ const avatarFormValidation = new FormValidator(validationObject, popupEditAvatar
 const cardFormValidation = new FormValidator(validationObject, popupAddCard);
 // Добавление API
 const api = new Api(apiConfig);
-// Callback показа ошибки сервера в консоли
-function logError(error) {
-  console.log(`${error}`);
-}
 // Ф-ция создания карточки
 function createCard(data, userId) {
   const card = new Card({ data: data,
@@ -86,12 +85,11 @@ function editProfileSubmitHandler({name, about}) {
   api.sendUserData(name, about)
     .then((userData) => {
       userInfo.setUserInfo(userData);
+      popupProfile.close();
     })
     .catch(logError)
     .finally(() => {
-      popupProfile.close();
       popupProfile.enableLoadingStatus(false);
-      profileFormValidation.resetClosedForm();
     });
 }
 // Callback сабмита изменения Аватара
@@ -100,12 +98,11 @@ function editAvatarSubmitHandler({ avatar }) {
   api.sendNewAvatar(avatar)
     .then((avatar) => {
       userInfo.setUserAvatar(avatar);
+      popupAvatar.close();
     })
     .catch(logError)
     .finally(() => {
-      popupAvatar.close();
       popupAvatar.enableLoadingStatus(false);
-      avatarFormValidation.resetClosedForm();
     });
 }
 // Callback сабмита подтверждения удаления
@@ -113,6 +110,9 @@ function deleteCardSubmitHandler(id, card) {
   api.deleteCard(id)
     .then(() => {
       card.remove();
+    })
+    .then(() => {
+      popupWithConfirmation.close();
     })
     .catch(logError);
 }
@@ -134,12 +134,11 @@ api.getInitialData()
       api.sendNewCard(card)
         .then((card) => {
           cardsList.setItems(createCard(card, userId));
+          popupCards.close();
         })
         .catch(logError)
         .finally(() => {
-          popupCards.close();
           popupCards.enableLoadingStatus(false);
-          cardFormValidation.resetClosedForm();
         });
     }
 //Установка аватара и данных пользователя на странице
